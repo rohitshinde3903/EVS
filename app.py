@@ -480,7 +480,7 @@ def create_password():
 
         conn = get_db_connection()
         voter = conn.execute('SELECT * FROM voters_auth WHERE id = ?', (voter_id,)).fetchone()
-
+#
         if voter is None:
             flash('Voter not found!', 'error')
             return redirect(url_for('create_password'))
