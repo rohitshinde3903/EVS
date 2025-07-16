@@ -1,0 +1,62 @@
+/* Custom CSS to unify design and spacing like the index page */
+
+body {
+    background-color: #111; /* Dark background for consistency */
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    padding: 100px 0; /* Consistent spacing for all sections */
+}
+
+.container {
+    max-width: 1200px; /* Centralize all containers */
+    padding: 0 20px;    /* Uniform padding inside containers */
+    margin: 0 auto;     /* Center container horizontally */
+}
+
+.navbar, footer {
+    background-color: #222; /* Use consistent dark background for both navbar and footer */
+    border-bottom: 1px solid #444; /* Add a subtle border for separation */
+}
+
+.navbar a, footer a {
+    color: #f59e0b; /* Uniform link color across navigation and footer */
+}
+
+.hero-bg {
+    background-image: url('https://source.unsplash.com/1600x900/?technology,innovation');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0; /* Adjust padding for hero section */
+}
+
+.card {
+    background-color: #333; /* Uniform card background color */
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-hover-effect {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth animation for uniformity */
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    transition: all 0.3s ease-in-out; /* Smooth button hover effect */
+}
+
+.btn-primary:hover {
+    background-color: #f43f5e;
+    color: #fff;
+}
+
+
+.footer a:hover {
+    text-decoration: underline; /* Consistent hover effect for footer links */
+}

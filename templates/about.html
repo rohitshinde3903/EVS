@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Rohit Shinde</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/custom.css">
+
+    <!-- Custom Styling -->
+    <style>
+        .about-section {
+            padding: 100px 0;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .content-box {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .highlight-text {
+            color: #f59e0b; /* Accent color for highlighting key points */
+        }
+
+        .skills-list, .certifications-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li, .certifications-list li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .skills-list li::before, .certifications-list li::before {
+            content: "\f00c"; /* FontAwesome check icon */
+            font-family: 'Font Awesome 5 Free';
+            margin-right: 10px;
+            color: #f59e0b;
+            font-weight: 900;
+        }
+        
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Stones Web Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-2"><a class="nav-link" href="/#home">Home</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="/#services">Services</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="/#portfolio">Portfolio</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="/#testimonials">Testimonials</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link" href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   <!-- About Me Section -->
+<!-- <section class="about-section text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 text-center mb-5 mb-md-0">
+                <img src="https://via.placeholder.com/300" alt="Rohit Shinde" class="profile-image rounded-circle shadow-lg">
+            </div>
+            <div class="col-md-7">
+                <div class="content-box bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h2 class="display-4 mb-4 text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">About Me</h2>
+                    <p class="lead mb-4">
+                        Hello, I'm <span class="highlight-text" style="font-weight: bold; font-size: 1.2rem;">Rohit Shinde</span>, a passionate and dedicated B.Tech student specializing in <span class="highlight-text">Artificial Intelligence</span> and <span class="highlight-text">Data Science</span> at Dr. D.Y. Patil Vidyapeeth.
+                    </p>
+                    <p class="lead mb-4">
+                        My expertise lies in transforming complex datasets into actionable insights through 
+                        <span class="highlight-text">data visualization</span>, 
+                        <span class="highlight-text">machine learning</span>, and 
+                        <span class="highlight-text">statistical analysis</span>.
+                    </p>
+                    <p class="lead mb-4">
+                        I love building innovative technology solutions that help businesses leverage data for better decision-making and improved efficiency.
+                    </p>
+                    <p class="lead text-center mb-0">
+                        Let's work together to turn your ideas into reality!
+                    </p>
+                    <div class="text-center mt-4">
+                        <a href="#contact" class="btn btn-primary btn-lg">Get In Touch</a>
+                        <a href="#portfolio" class="btn btn-outline-secondary btn-lg">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+
+<section class="about-section text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5 text-center mb-5 mb-md-0">
+                <img src="https://via.placeholder.com/300" alt="Rohit Shinde" class="profile-image rounded-circle shadow-lg">
+            </div>
+            <div class="col-md-7">
+                <div class="content-box bg-gray-800 p-4 rounded-lg shadow-md">
+                    <h2 class="display-4 mb-4 text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">About Me</h2>
+                    <p class="lead mb-4">
+                        Hello, I'm <span class="highlight-text" style="font-weight: bold; font-size: 1.2rem;">रोहित शिंदे (Rohit Shinde)</span>, a <span class="highlight-text">उत्साही (passionate)</span> and dedicated B.Tech student specializing in <span class="highlight-text">Artificial Intelligence</span> and <span class="highlight-text">Data Science</span> at Dr. D.Y. Patil Vidyapeeth.
+                    </p>
+                    <p class="lead mb-4">
+                        My <span class="highlight-text">अनुभव (experience)</span> lies in transforming complex datasets into actionable insights through  
+                        <span class="highlight-text">data visualization</span>, 
+                        <span class="highlight-text">machine learning</span>, and 
+                        <span class="highlight-text">statistical analysis</span>.
+                    </p>
+                    <p class="lead mb-4">
+                        I love building <span class="highlight-text">नवीन (innovative)</span> technology solutions that help businesses leverage data for better decision-making and improved efficiency.
+                    </p>
+                    <p class="lead text-center mb-0">
+                        Let's work together to turn your ideas into reality!
+                    </p>
+                    <div class="text-center mt-4">
+                        <a href="#contact" class="btn btn-primary btn-lg">Get In Touch</a>
+                        <a href="#portfolio" class="btn btn-outline-secondary btn-lg">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="about-section text-white">
+        <div class="container text-center">
+            <h3 class="display-4 mb-4">Skills</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Data Visualization</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Creating interactive and informative visual representations of data.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Python Programming</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Writing efficient and reusable code for data analysis and application development.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">SQL & Database Management</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Managing and querying relational databases to store and retrieve data effectively.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Statistical Analysis</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Applying statistical methods to analyze data and derive meaningful insights.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Machine Learning & AI</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Building predictive models using machine learning algorithms to automate decision-making.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Mathematical Modeling</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Creating mathematical models to solve complex problems in various domains.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Data Cleaning and Preparation</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Preparing and cleaning datasets to ensure accurate analysis and reporting.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Developing responsive and interactive web applications using HTML, CSS, and JavaScript.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Developing responsive and interactive web applications using HTML, CSS, and JavaScript.">Hover for Info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bootstrap JS and Popper.js for Tooltips -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+    
+    
+
+    <!-- Certifications Section -->
+<section id="certifications" class="about-section text-white">
+    <div class="container">
+        <h3 class="display-4 mb-4 text-center">Certifications</h3>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Google Advanced Data Analytics</h5>
+                        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="A professional certificate demonstrating advanced skills in data analytics, data visualization, and data-driven decision-making.">Hover for Info</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Python - HackerRank</h5>
+                        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="A certification showcasing proficiency in Python programming through solving real-world problems.">Hover for Info</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Introduction to Azure</h5>
+                        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="An introductory course on Microsoft Azure, covering cloud computing fundamentals and services.">Hover for Info</p>
+                    </div>
+                </div>
+            </div>
+            <div  class="col-lg-4 col-md-6 mb-4">
+                <div  class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">TCS iON Career Edge</h5>
+                        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="A course designed to enhance professional skills and prepare for the job market.">Hover for Info</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-gray-800 shadow-lg border border-light rounded-lg">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Programming Basics</h5>
+                        <p class="card-text" data-bs-toggle="tooltip" data-bs-placement="top" title="A fundamental course covering the basics of programming languages and logic.">Hover for Info</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS and Popper.js for Tooltips -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>
+
+
+    <!-- Experience Section -->
+    <section id="experience" class="about-section text-white">
+        <div class="container text-center">
+            <h3 class="display-4 mb-4">Experience</h3>
+            <div class="content-box mx-auto" style="max-width: 800px;">
+                <h4 class="text-2xl font-bold mb-3">Web Development Intern</h4>
+                <p><strong>INFYSKILL EDUTECH</strong> (Dec 2023 - Jan 2024)</p>
+                <p class="mb-4">
+                    Led the development and design of the company's main website using <span class="highlight-text">Figma</span> and <span class="highlight-text">Canva</span>, enhancing user experience and functionality. Worked with cross-functional teams to deliver the best user interface and meet deadlines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <!-- About Us Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase"><span class="highlight-text">ABOUT US</span></h5>
+                    <p>We are committed to providing top-notch technology solutions to empower businesses and enhance digital experiences.</p>
+                </div>
+    
+                <!-- Services Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase"><span class="highlight-text">OUR SERVICES</span></h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#services" class="text-white">AI Solutions</a></li>
+                        <li><a href="#services" class="text-white">Web Development</a></li>
+                        <li><a href="#services" class="text-white">Data Analytics</a></li>
+                        <li><a href="#services" class="text-white">Digital Marketing</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Quick Links Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase"><span class="highlight-text">QUICK LINKS</span></h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="#about" class="text-white">About Me</a></li>
+                        <li><a href="#portfolio" class="text-white">Portfolio</a></li>
+                        <li><a href="#testimonials" class="text-white">Testimonials</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="text-uppercase"><span class="highlight-text">CONTACT US</span></h5>
+                    <p>Email: <a href="mailto:rohit@example.com" class="text-white">stoneswebservices@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+1234567890" class="text-white">+91 8010165063</a></p>
+                </div>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="row text-center mt-4">
+                <div class="col">
+                    <h5 class="text-uppercase"><span class="highlight-text">FOLLOW US</span></h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="text-center p-3" style="background-color: rgba(255, 255, 255, 0.1);">
+            <p class="mb-0">&copy; 2024 Stones Web Services <span class="highlight-text">ROHIT SHINDE</span>. All rights reserved.</p>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

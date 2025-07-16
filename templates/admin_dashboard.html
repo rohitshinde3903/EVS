@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            display: block;
+            /* Ensure the canvas is treated as a block element */
+            max-width: 100%;
+            height: auto;
+            /* Allow height to adjust based on width */
+        }
+    </style>
+</head>
+
+<body class="p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Admin Dashboard - Voting System</h1>
+
+
+        <div class="flex space-x-4 my-5"></div>
+        <a href="/voters" class="btn btn-primary mx-5">Voters</a>
+        <a href="/candidates" class="btn btn-primary mx-5">Candidates</a>
+        <a href="/positions" class="btn btn-secondary mx-5">Manage Positions</a>
+        <a href="/start_voting" class="btn btn-secondary mx-5">Start Voting</a>
+        <a href="/declare_winners" class="btn btn-secondary mx-5">Declare Winners</a>
+        <a href="/voted" class="btn btn-secondary mx-5">voted</a>
+
+    </div>
+    </div>
+
+    <!-- Voter Statistics Section -->
+    <div class="mb-8 my-5">
+        <h2 class="text-2xl font-semibold mb-4">Voter Statistics</h2>
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-blue-500 text-white p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Total Registered Voters</h3>
+                <p id="totalVoters" class="text-3xl">{{ total_voters }}</p>
+            </div>
+            <div class="bg-green-500 text-white p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Total Voted</h3>
+                <p id="totalVoted" class="text-3xl">{{ total_voted }}</p>
+            </div>
+            <div class="bg-red-500 text-white p-4 rounded-lg">
+                <h3 class="text-lg font-bold">Not Voted</h3>
+                <p id="notVoted" class="text-3xl">{{ not_voted }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-2 gap-8 mb-8">
+        <div>
+            <h2 class="text-2xl font-semibold mb-4">Voter Participation Pie Chart</h2>
+            <canvas id="participationChart"></canvas>
+        </div>
+        <div>
+            <h2 class="text-2xl font-semibold mb-4">Voter Count Bar Chart</h2>
+            <canvas id="voterCountChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Navigation Links -->
+
+
+    <script>
+        // Convert the values into JavaScript-readable format
+        const totalVoters = {{ total_voters | tojson }};
+        const totalVoted = {{ total_voted | tojson }};
+        const notVoted = {{ not_voted | tojson }};
+
+        // Participation Pie Chart
+        const participationCtx = document.getElementById('participationChart').getContext('2d');
+        const participationChart = new Chart(participationCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Voted', 'Not Voted'],
+                datasets: [{
+                    data: [totalVoted, notVoted],
+                    backgroundColor: ['#36a2eb', '#ff6384'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Voter Count Bar Chart
+        const voterCountCtx = document.getElementById('voterCountChart').getContext('2d');
+        const voterCountChart = new Chart(voterCountCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Total Registered Voters', 'Total Voted', 'Not Voted'],
+                datasets: [{
+                    label: 'Voter Count',
+                    data: [totalVoters, totalVoted, notVoted],
+                    backgroundColor: ['#42a5f5', '#66bb6a', '#ef5350'],
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

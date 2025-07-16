@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voters - Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System</h1>
+            <div class="flex space-x-4">
+                <a href="/back" class="btn btn-outline btn-primary">Back</a>
+            </div>
+        </nav>
+        <h1 class="text-3xl font-bold mb-4">Voters</h1>
+
+        <!-- Add Voter Form -->
+        <form action="/add_new_voter" method="POST" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">Add Voter</h2>
+            <input type="number" name="voter_id" placeholder="Voter ID" class="input input-bordered input-secondary w-md max-w-xs m-4" required>
+            <input type="text" name="name" placeholder="Voter Name" class="input input-bordered input-secondary w-full max-w-xs m-4" required>
+            <input type="text" name="class" placeholder="Class" class="input input-bordered input-secondary w-md max-w-xs m-4" required>
+            <input type="email" name="email" placeholder="Email ID" class="input input-bordered input-secondary w-full max-w-xs m-4" required>
+            
+            <button class="btn btn-secondary mt-2 px-5 m-4">Add Voter</button>
+        </form>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message" class="alert alert-warning shadow-lg m-5">
+                    <div>
+                        {% for category, message in messages %}
+                            <span>{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Search Voter Form -->
+        <form action="/voters" method="POST" class="mb-8">
+            <div class="flex items-center space-x-4">
+                <input type="text" name="search_query" placeholder="Search by ID, Name, or Email" class="input input-bordered input-secondary w-full max-w-md">
+                <button class="btn btn-primary px-5">Search</button>
+            </div>
+        </form>
+
+        <!-- Voters List -->
+        <h2 class="text-2xl font-semibold mb-2">Voters List</h2>
+        <table class="table-auto w-full mb-8">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2" style="color: blueviolet;">Voter ID</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Name</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Class</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Voted</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Email</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Password Created</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Delete Voter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for voter in voters %}
+                <tr>
+                    <td class="border px-4 py-2">{{ voter.id }}</td>
+                    <td class="border px-4 py-2">{{ voter.name }}</td>
+                    <td class="border px-4 py-2">{{ voter.class }}</td>
+                    <td class="border px-4 py-2">{{ 'Yes' if voter.voted == 1 else 'No' }}</td>
+                    <td class="border px-4 py-2">{{ voter.email }}</td>
+                    <td class="border px-4 py-2">{{ 'No' if voter.password == 0 else 'Yes' }}</td>
+                    <td class="border px-4 py-2">
+                        <form action="/delete_voter/{{ voter.id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this voter?');">
+                            <button class="btn btn-error">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+         
+    </div>
+</body>
+</html>

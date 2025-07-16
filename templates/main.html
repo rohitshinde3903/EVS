@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Voting System</title>
+    <!-- Tailwind & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+
+<body class="p-6">
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Welcome to the Electronic Voting System</h1>
+        <p class="text-lg mb-6">
+            This system is designed to facilitate efficient and secure online voting. Our goal is to ensure transparency and convenience for both voters and administrators. The application is equipped with features like voter registration, candidate management, and secure voting processes.
+        </p>
+
+        <div class="mt-6">
+            <a href="{{ url_for('admin_login') }}" class="btn btn-primary">Admin Login</a>
+        </div>
+    </div>
+</body>
+
+</html>

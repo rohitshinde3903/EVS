@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voters - Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System</h1>
+            <div class="flex space-x-4">
+                <a href="/back" class="btn btn-outline btn-primary">Back</a>
+            </div>
+        </nav>
+        <h1 class="text-3xl font-bold mb-4">Voters Who are Voted</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message" class="alert alert-warning shadow-lg m-5">
+                    <div>
+                        {% for category, message in messages %}
+                            <span>{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Search Voter Form -->
+        <form action="/voters" method="POST" class="mb-8">
+            <div class="flex items-center space-x-4">
+                <input type="text" name="search_query" placeholder="Search by ID, Name, or Email" class="input input-bordered input-secondary w-full max-w-md">
+                <button class="btn btn-primary px-5">Search</button>
+            </div>
+        </form>
+
+        <!-- Voters List -->
+        <h2 class="text-2xl font-semibold mb-2">Voters Voted List</h2>
+        <table class="table-auto w-full mb-8">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2" style="color: blueviolet;">Voter ID</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Name</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Class</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Voted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for voter in voters_voted %}
+                <tr>
+                    <td class="border px-4 py-2">{{ voter.id }}</td>
+                    <td class="border px-4 py-2">{{ voter.name }}</td>
+                    <td class="border px-4 py-2">{{ voter.class }}</td>
+                    <td class="border px-4 py-2">{{ 'Yes' if voter.voted == 1 else 'No' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+         
+    </div>
+</body>
+</html>

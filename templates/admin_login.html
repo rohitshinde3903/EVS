@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Electronic Voting System</title>
+    <!-- Tailwind & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+
+<body class="p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Admin Login</h1>
+        <form action="/admin_login" method="POST" class="max-w-sm">
+            <div class="mb-4">
+                <label class="block text-lg font-semibold mb-1" for="username">Username</label>
+                <input type="text" name="username" id="username" class="input input-bordered w-full" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-lg font-semibold mb-1" for="password">Password</label>
+                <input type="password" name="password" id="password" class="input input-bordered w-full" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-message" class="alert alert-warning shadow-lg">
+                <div>
+                    {% for category, message in messages %}
+                        <span>{{ message }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    </div>
+</body>
+
+</html>

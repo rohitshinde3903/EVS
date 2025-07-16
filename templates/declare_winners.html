@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declare Winners</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System - Winners</h1>
+            <div class="flex space-x-4">
+                <a href="/" class="btn btn-outline btn-primary">Home</a>
+            </div>
+        </nav>
+
+        <section class="my-8">
+            <h2 class="text-4xl font-bold mb-4">Declared Winners</h2>
+
+            {% if winners %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for winner in winners %}
+                <div class="border p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-semibold">{{ winner.position }}</h3>
+                    <p class="mt-4 text-lg"><strong>Winner:</strong> {{ winner.winner_name }}</p>
+                    <p class="text-sm text-gray-500">Votes: {{ winner.winner_votes }}</p>
+                    {% if winner.second_name != 'No other candidate' %}
+                        <p class="mt-2 text-md"><strong>Margin:</strong> Won by {{ winner.margin }} votes</p>
+                        <p class="text-sm">Second Place: {{ winner.second_name }} ({{ winner.second_votes }} votes)</p>
+                    {% else %}
+                        <p class="mt-2 text-md text-green-500">Uncontested Winner</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No winners to display at the moment.</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

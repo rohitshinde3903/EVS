@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Positions - Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System</h1>
+            <div class="flex space-x-4">
+                <a href="/back" class="btn btn-outline btn-primary">Back</a>
+            </div>
+        </nav>
+        <h1 class="text-3xl font-bold mb-4">Manage Positions</h1>
+
+        <!-- Add Position Form -->
+        <form action="/add_position" method="POST" class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2">Add Position</h2>
+            <input type="text" name="position" placeholder="Position Name (e.g. CS, GS, CR)" class="input input-bordered input-secondary w-full max-w-xs" required>
+            <button class="btn btn-secondary mt-2">Add Position</button>
+        </form>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message" class="alert alert-warning shadow-lg">
+                    <div>
+                        {% for category, message in messages %}
+                            <span>{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Positions List -->
+        <h2 class="text-2xl font-semibold mb-2">Positions List</h2>
+        <table class="table-auto w-full mb-8">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2" style="color: blueviolet;">Position Name</th>
+                    <th class="px-4 py-2" style="color: blueviolet;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for position in positions %}
+                <tr>
+                    <td class="border px-4 py-2">{{ position.name }}</td>
+                    <td class="border px-4 py-2">
+                        <form action="/delete_position/{{ position.id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this position?');">
+                            <button class="btn btn-error">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

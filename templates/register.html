@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voters - Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System BY Stones Web</h1>
+            <div class="flex space-x-4">
+                <a href="/back" class="btn btn-outline btn-primary">Back</a>
+            </div>
+        </nav>
+        <center>
+        <h1 class="text-center text-3xl font-bold mb-4">Enter Your ERP_ID and Institute email</h1>
+
+        <!-- Add Voter Form -->
+        <form action="/register_voter" method="POST" class="m-4">
+            <h2 class="text-2xl font-semibold m-4">Enter ERP_ID</h2>
+            <input type="number" name="voter_id" placeholder="Voter ID" class="input input-bordered input-secondary w-full max-w-xs m-4" required>
+            <h2 class="text-2xl font-semibold m-4">Enter Mail</h2>
+            <input type="email" name="email" placeholder="Email ID" class="input input-bordered input-secondary w-full max-w-xs m-4" required>
+            <h2 class="text-2xl font-semibold m-4"></h2>
+            <!-- <input type="password" name="password" placeholder="password" class="input input-bordered input-secondary w-full max-w-xs" required> -->
+
+            <button class="btn btn-secondary m-4 px-5">Add Voter</button>
+        </form>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message" class="alert alert-warning shadow-lg p-5">
+                    <div>
+                        {% for category, message in messages %}
+                            <span>{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+</center>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6">
+    <div class="container mx-auto">
+        <nav class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">Electronic Voting System</h1>
+            <div class="flex space-x-4">
+                <a href="/back" class="btn btn-outline btn-primary">Back</a>
+            </div>
+        </nav>
+
+        <section class="my-8">
+            <h2 class="text-4xl font-bold mb-4">Start Voting</h2>
+            <form action="{{ url_for('start_voting') }}" method="POST" class="mb-6">
+                <input type="text" name="voter_id" placeholder="Enter Voter ID" class="input input-bordered w-full" required>
+                <input type="password" name="password" placeholder="password" class="input input-bordered input-secondary w-full max-w-xs" required>
+                <button type="submit" class="btn btn-primary mt-4">Confirm</button>
+            </form>
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div id="flash-message" class="alert alert-warning shadow-lg">
+                    <div>
+                        {% for category, message in messages %}
+                            <span>{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            {% endwith %}
+
+            {% if voter_info %}
+            <div style="display: grid; place-items:center; padding-bottom: 1rem" class="mb-6">
+                <h3 class="py-1 text-xl font-semibold">Voter Information:</h3>
+                <p style="color: red;"><strong>ID:</strong> <strong>{{ voter_info['id'] }}</strong></p>
+                <p class="py-1"><strong>Name:</strong> {{ voter_info['name'] }}</p>
+                <p class="py-1"><strong>Email:</strong> {{ voter_info['email'] }}</p>
+                <p class="py-1"><strong>Status:</strong> {% if voter_info['voted'] == 1 %} Already Voted {% else %} Not Voted {% endif %}</p>
+            </div>
+            <h1 style="display: grid; place-items:center;" class="text-3xl font-semibold mb-4">Select a Candidate:</h1>
+
+            <form action="{{ url_for('vote') }}" method="POST">
+                {% for position, position_candidates in candidates|groupby('position') %}
+                    <h2 class="text-2xl font-bold mb-4">{{ position }}</h2>
+                    <div class="grid grid-cols-4 md:grid-cols-4 gap-4 mb-6">
+                        {% for candidate in position_candidates %}
+                            <div class="border p-4 rounded-lg shadow-md text-center" id="candidate_container_{{ candidate['id'] }}">
+                                <div style="display: grid; place-items:center; padding-bottom: 1rem">
+                                    <img src="{{ url_for('static', filename='uploads/' + candidate.image) }}" alt="{{ candidate['name'] }}" class="w-24 h-24 mb-2 rounded-full">
+                                </div>
+                                <hr style="padding-top: 1rem">
+                                <h4 class="text-lg font-bold">{{ candidate['name'] }}</h4>
+                                <p><strong>Position:</strong> {{ candidate['position'] }}</p>
+                                <p><strong>Class:</strong> {{ candidate['class'] }}</p>
+                                <p><strong>ID:</strong> {{ candidate['id'] }}</p>
+                                <input style="display: none;" type="radio" id="candidate_{{ candidate['id'] }}" name="candidate_id_{{ position }}" value="{{ candidate['id'] }}" required>
+                                <button type="button" class="btn btn-outline btn-primary mt-2 vote-button" onclick="selectCandidate('{{ candidate['id'] }}', '{{ position }}')">Vote Me</button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div style="display: grid; place-items:center; padding-bottom: 1rem">
+                    <input type="hidden" name="voter_id" value="{{ voter_info['id'] }}">
+                    <button type="submit" class="btn btn-success mt-4">Submit Vote</button>
+                </div>
+            </form>
+
+            <script>
+                function selectCandidate(candidateId, position) {
+                    // Deselect all candidates for this position
+                    document.querySelectorAll(`[name="candidate_id_${position}"]`).forEach(input => {
+                        const button = document.querySelector(`#candidate_container_${input.value} .vote-button`);
+                        button.classList.remove('btn-success');
+                        button.classList.add('btn-outline', 'btn-primary');
+                    });
+
+                    // Mark selected candidate
+                    const selectedButton = document.querySelector(`#candidate_container_${candidateId} .vote-button`);
+                    selectedButton.classList.remove('btn-outline', 'btn-primary');
+                    selectedButton.classList.add('btn-success');
+
+                    // Set the radio button as checked
+                    document.getElementById(`candidate_${candidateId}`).checked = true;
+                }
+            </script>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

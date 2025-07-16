@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.18.0/dist/full.css" rel="stylesheet">
+</head>
+
+<body class="p-6">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Vote for Your Candidate</h1>
+
+        <form action="{{ url_for('vote') }}" method="POST">
+            <h2 class="text-xl font-semibold mb-4">Select a Candidate:</h2>
+            {% for candidate in candidates %}
+                <div>
+                    <input type="radio" id="candidate_{{ candidate['id'] }}" name="candidate_id" value="{{ candidate['id'] }}" required>
+                    <label for="candidate_{{ candidate['id'] }}">{{ candidate['name'] }}</label>
+                </div>
+            {% endfor %}
+            <input type="hidden" name="voter_id" value="{{ voter_id }}">  <!-- Pass the voter ID -->
+            <button type="submit" class="btn btn-success">Vote</button>
+        </form>
+        
+        
+    </div>
+</body>
+
+</html>
