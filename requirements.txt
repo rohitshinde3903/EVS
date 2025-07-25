@@ -1,5 +1,4 @@
 Flask==2.3.2
-sqlite3
 flask_sqlalchemy==3.0.0
 requests==2.31.0
 smtplib-client==0.3.1
